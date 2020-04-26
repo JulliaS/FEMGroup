@@ -12,9 +12,7 @@ namespace Ірщз.FEMSolver
     public class FEMSolver
     {
         public FEMContext FEMContext { get; private set; }
-
-
-
+        
         public FEMSolver(FEMContext femContext)
         {
             FEMContext = new FEMContext();
@@ -146,10 +144,6 @@ namespace Ірщз.FEMSolver
             FEMContext.A = new Matrix(N);
             FEMContext.B = new Matrix(N, 1);
 
-            //if (Me == null) Me = this._Me();
-            //if (Qe == null) Qe = this._Qe();
-            //if (Ke == null) Ke = this._Ke();
-
             int e = FEMContext.Data.NT.GetLength(0);
             for (int k = 0; k < e; k++)
             {
@@ -162,9 +156,6 @@ namespace Ірщз.FEMSolver
                     FEMContext.B[FEMContext.Data.NT[k].GetVertexID(i)] += FEMContext.Qe[k][i, 0];
                 }
             }
-
-            //if (Pe == null) Pe = this._Pe();
-            //if (Re == null) Re = this._Re();
 
             N = FEMContext.Data.GT.GetLength(0);
 
